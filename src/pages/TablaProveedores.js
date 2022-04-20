@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import CustomModal from '../components/CustomModal';
 import Modal from '../components/Modal';
 
 export default function TablaProveedores(props) {
@@ -50,9 +51,21 @@ export default function TablaProveedores(props) {
                 })}
             </tbody>
         </table>
-        {isShowModal && <Modal text={'¿Está seguro de eliminar el proveedor?'} 
+        {/* {isShowModal && <Modal text={'¿Está seguro de eliminar el proveedor?'} 
                                handleCancelAction={handleCloseModal}
-                               handleConfirmAction={handleConfirmDeleteProveedor}/>}
+                               handleConfirmAction={handleConfirmDeleteProveedor}/>} */}
+        {isShowModal && <CustomModal>
+                            <p>¿Está seguro de eliminar el proveedor?</p>
+                            <div className="modal-buttons">
+                                <button className='outline'
+                                        onClick={handleCloseModal}>
+                                            Cancelar
+                                </button>
+                                <button onClick={handleConfirmDeleteProveedor}>
+                                    Aceptar
+                                </button>
+                            </div>
+                        </CustomModal>}
         
     </>
   )
